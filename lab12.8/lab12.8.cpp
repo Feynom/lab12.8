@@ -17,7 +17,7 @@ void Enqueue(Elem*& first, Elem*& last, Info value);
 void Read_File(Elem*& first, Elem*& last);
 void Print(Elem* L);
 void Print_Next_Even(Elem* L);
-void Print_Prev_Non_Even(Elem* L);
+void Print_Prev_Non_Even(Elem* L, Elem* first);
 int Count(Elem* L);
 
 int main()
@@ -32,7 +32,7 @@ int main()
 	Read_File(first, last);
 	cout << "Список: "; Print(first); cout << endl;
 	cout << "Парні номери елементів(в праву сторону): "; Print_Next_Even(first); cout << endl;
-	cout << "Непарні номери елементів(в ліву сторону сторону): "; Print_Prev_Non_Even(last); cout << endl;
+	cout << "Непарні номери елементів(в ліву сторону сторону): "; Print_Prev_Non_Even(last, first); cout << endl;
 
 	return 0;
 }
@@ -83,9 +83,9 @@ void Print_Next_Even(Elem* L)
 		L = L->next;
 	}
 }
-void Print_Prev_Non_Even(Elem* L)
+void Print_Prev_Non_Even(Elem* L, Elem* first)
 {
-	int count = Count(L) - 1;
+	int count = Count(first);
 	while (L != NULL)
 	{
 		if (count % 2 != 0)
