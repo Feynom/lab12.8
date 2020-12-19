@@ -18,6 +18,7 @@ void Read_File(Elem*& first, Elem*& last);
 void Print(Elem* L);
 void Print_Next_Even(Elem* L);
 void Print_Prev_Non_Even(Elem* L);
+int Count(Elem* L);
 
 int main()
 {
@@ -84,12 +85,22 @@ void Print_Next_Even(Elem* L)
 }
 void Print_Prev_Non_Even(Elem* L)
 {
-	int count = 1;
+	int count = Count(L) - 1;
 	while (L != NULL)
 	{
 		if (count % 2 != 0)
 			cout << L->info << " ";
-		count++;
+		count--;
 		L = L->prev;
 	}
+}
+int Count(Elem* L)
+{
+	int count = 0; 
+	while (L != NULL)
+	{
+		count++;
+		L = L->next;
+	}
+	return count;
 }
